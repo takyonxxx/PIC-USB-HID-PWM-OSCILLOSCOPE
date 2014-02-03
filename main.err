@@ -1,0 +1,11 @@
+>>> Warning 203 "C:\Program Files\PICC\drivers\pic18_usb.h" Line 504(1,1): Condition always TRUE
+>>> Warning 205 "main.c" Line 106(1,1): Unsigned variable is never less than zero
+>>> Warning 204 "main.c" Line 106(1,1): Condition always FALSE
+>>> Warning 205 "main.c" Line 116(1,1): Unsigned variable is never less than zero
+>>> Warning 204 "main.c" Line 116(1,1): Condition always FALSE
+>>> Warning 216 "main.c" Line 145(2,3): Interrupts disabled during call to prevent re-entrancy:  (usb_token_reset)
+>>> Warning 216 "main.c" Line 145(2,3): Interrupts disabled during call to prevent re-entrancy:  (usb_flush_out)
+>>> Warning 216 "main.c" Line 145(2,3): Interrupts disabled during call to prevent re-entrancy:  (usb_flush_in)
+>>> Warning 202 "main.c" Line 25(14,18): Variable never used:   pwm1
+      Memory usage:   ROM=16%      RAM=53% - 55%
+      0 Errors,  9 Warnings.
