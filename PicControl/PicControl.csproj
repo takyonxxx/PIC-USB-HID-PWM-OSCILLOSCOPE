@@ -8,8 +8,8 @@
     <ProjectGuid>{D4AEF646-9813-42B6-A3E5-8FA3A54CF1D0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ScopeTest</RootNamespace>
-    <AssemblyName>ScopeTest</AssemblyName>
+    <RootNamespace>PicControl</RootNamespace>
+    <AssemblyName>PicControl</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
