@@ -253,7 +253,7 @@ namespace ScopeTest {
 
                 button2.Text = "Stop Pwm";
                 lbl_status.Text = "PWM Started";
-                text_pwmfreq.Text = String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
+                text_pwmfreq.Text = "Pwm Freq: " + String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
             }
             else
             {
@@ -261,6 +261,7 @@ namespace ScopeTest {
                 SendData("S",0);
                 button2.Text = "Start Pwm";
                 lbl_status.Text = "PWM Stopped";
+                text_pwmfreq.Text = "Pwm Freq: 0 Khz";
             }
         }
              
@@ -322,7 +323,7 @@ namespace ScopeTest {
             SendData("D", duty);        
             updatePwmText(Convert.ToString(pwm));
             updateDutyText(Convert.ToString(duty));
-            text_pwmfreq.Text = String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
+            text_pwmfreq.Text = "Pwm Freq: " + String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
         }
 
         private void button4_Click_1(object sender, EventArgs e)
@@ -335,7 +336,7 @@ namespace ScopeTest {
             SendData("D", duty);
             updatePwmText(Convert.ToString(pwm));
             updateDutyText(Convert.ToString(duty));
-            text_pwmfreq.Text = String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
+            text_pwmfreq.Text = "Pwm Freq: " + String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
         }
 
         private void button5_Click_1(object sender, EventArgs e)

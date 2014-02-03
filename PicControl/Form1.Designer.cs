@@ -43,6 +43,11 @@ namespace ScopeTest {
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.text_pwmfreq = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkT1 = new System.Windows.Forms.CheckBox();
+            this.checkT4 = new System.Windows.Forms.CheckBox();
+            this.checkT16 = new System.Windows.Forms.CheckBox();
             this.text_duty = new System.Windows.Forms.TextBox();
             this.text_pwm = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -50,11 +55,6 @@ namespace ScopeTest {
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkT16 = new System.Windows.Forms.CheckBox();
-            this.checkT4 = new System.Windows.Forms.CheckBox();
-            this.checkT1 = new System.Windows.Forms.CheckBox();
-            this.text_pwmfreq = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
@@ -302,6 +302,62 @@ namespace ScopeTest {
             this.panel1.Size = new System.Drawing.Size(622, 151);
             this.panel1.TabIndex = 22;
             // 
+            // text_pwmfreq
+            // 
+            this.text_pwmfreq.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.text_pwmfreq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.text_pwmfreq.Location = new System.Drawing.Point(402, 49);
+            this.text_pwmfreq.Name = "text_pwmfreq";
+            this.text_pwmfreq.Size = new System.Drawing.Size(168, 21);
+            this.text_pwmfreq.TabIndex = 35;
+            this.text_pwmfreq.Text = "Pwm Freq: 0 Khz";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.checkT1);
+            this.groupBox1.Controls.Add(this.checkT4);
+            this.groupBox1.Controls.Add(this.checkT16);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox1.Location = new System.Drawing.Point(260, 49);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(134, 85);
+            this.groupBox1.TabIndex = 34;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Time Div";
+            // 
+            // checkT1
+            // 
+            this.checkT1.AutoSize = true;
+            this.checkT1.Location = new System.Drawing.Point(7, 62);
+            this.checkT1.Name = "checkT1";
+            this.checkT1.Size = new System.Drawing.Size(95, 17);
+            this.checkT1.TabIndex = 2;
+            this.checkT1.Text = "T2_DIV_BY_1";
+            this.checkT1.UseVisualStyleBackColor = true;
+            this.checkT1.CheckedChanged += new System.EventHandler(this.checkT1_CheckedChanged);
+            // 
+            // checkT4
+            // 
+            this.checkT4.AutoSize = true;
+            this.checkT4.Location = new System.Drawing.Point(7, 40);
+            this.checkT4.Name = "checkT4";
+            this.checkT4.Size = new System.Drawing.Size(95, 17);
+            this.checkT4.TabIndex = 1;
+            this.checkT4.Text = "T2_DIV_BY_4";
+            this.checkT4.UseVisualStyleBackColor = true;
+            this.checkT4.CheckedChanged += new System.EventHandler(this.checkT4_CheckedChanged);
+            // 
+            // checkT16
+            // 
+            this.checkT16.AutoSize = true;
+            this.checkT16.Location = new System.Drawing.Point(7, 20);
+            this.checkT16.Name = "checkT16";
+            this.checkT16.Size = new System.Drawing.Size(101, 17);
+            this.checkT16.TabIndex = 0;
+            this.checkT16.Text = "T2_DIV_BY_16";
+            this.checkT16.UseVisualStyleBackColor = true;
+            this.checkT16.CheckedChanged += new System.EventHandler(this.checkT16_CheckedChanged);
+            // 
             // text_duty
             // 
             this.text_duty.Location = new System.Drawing.Point(106, 111);
@@ -375,62 +431,6 @@ namespace ScopeTest {
             this.button2.Text = "Start Pwm";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.checkT1);
-            this.groupBox1.Controls.Add(this.checkT4);
-            this.groupBox1.Controls.Add(this.checkT16);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(260, 49);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(134, 85);
-            this.groupBox1.TabIndex = 34;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Time Div";
-            // 
-            // checkT16
-            // 
-            this.checkT16.AutoSize = true;
-            this.checkT16.Location = new System.Drawing.Point(7, 20);
-            this.checkT16.Name = "checkT16";
-            this.checkT16.Size = new System.Drawing.Size(101, 17);
-            this.checkT16.TabIndex = 0;
-            this.checkT16.Text = "T2_DIV_BY_16";
-            this.checkT16.UseVisualStyleBackColor = true;
-            this.checkT16.CheckedChanged += new System.EventHandler(this.checkT16_CheckedChanged);
-            // 
-            // checkT4
-            // 
-            this.checkT4.AutoSize = true;
-            this.checkT4.Location = new System.Drawing.Point(7, 40);
-            this.checkT4.Name = "checkT4";
-            this.checkT4.Size = new System.Drawing.Size(95, 17);
-            this.checkT4.TabIndex = 1;
-            this.checkT4.Text = "T2_DIV_BY_4";
-            this.checkT4.UseVisualStyleBackColor = true;
-            this.checkT4.CheckedChanged += new System.EventHandler(this.checkT4_CheckedChanged);
-            // 
-            // checkT1
-            // 
-            this.checkT1.AutoSize = true;
-            this.checkT1.Location = new System.Drawing.Point(7, 62);
-            this.checkT1.Name = "checkT1";
-            this.checkT1.Size = new System.Drawing.Size(95, 17);
-            this.checkT1.TabIndex = 2;
-            this.checkT1.Text = "T2_DIV_BY_1";
-            this.checkT1.UseVisualStyleBackColor = true;
-            this.checkT1.CheckedChanged += new System.EventHandler(this.checkT1_CheckedChanged);
-            // 
-            // text_pwmfreq
-            // 
-            this.text_pwmfreq.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.text_pwmfreq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.text_pwmfreq.Location = new System.Drawing.Point(402, 49);
-            this.text_pwmfreq.Name = "text_pwmfreq";
-            this.text_pwmfreq.Size = new System.Drawing.Size(168, 21);
-            this.text_pwmfreq.TabIndex = 35;
-            this.text_pwmfreq.Text = "Disconnected";
             // 
             // Form1
             // 
