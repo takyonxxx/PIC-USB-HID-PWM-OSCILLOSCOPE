@@ -21,8 +21,10 @@ namespace ScopeTest {
         byte[] received_buffer = new byte[8];
 		int samples = 10;
 		int samplesGenerated = 0;
-        int pwm = 255;
-        int duty = 128; 
+        int pwm = 128;
+        int duty = 64;
+        int timediv = 16;
+        int xtalfreq = 20000000;
 		double eqTime = 0.025;
 		public Form1() {
 			InitializeComponent();
@@ -137,7 +139,7 @@ namespace ScopeTest {
             scopeControl.Traces[2].Visible = false;
             scopeControl.Traces[3].Visible = false;
 			trackBar1_Scroll(null, null);
-
+            checkT16.Checked = true;
 		}
 
 		private void textBox_Leave(object sender, EventArgs e) {
@@ -197,16 +199,6 @@ namespace ScopeTest {
 			}
 		}
 
-		private void button1_Click(object sender, EventArgs e) {
-			if ( button1.Text == "Set Color=Blue" ) {
-				scopeControl.Traces[0].TraceColor = Color.Blue;
-				button1.Text = "Set Color=Gold";
-			} else {
-				scopeControl.Traces[0].TraceColor = Color.Gold;
-				button1.Text = "Set Color=Blue";
-			}
-		}
-
 		private void checkBox1_CheckedChanged(object sender, EventArgs e) {
 			scopeControl.Traces[0].Visible = !scopeControl.Traces[0].Visible;
 		}
@@ -249,10 +241,19 @@ namespace ScopeTest {
         {
             if (Convert.ToString(button2.Text) == "Start Pwm")
             {
-                button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = true;
-                SendData("P",0);
+                text_pwm.Text = "128";
+                text_duty.Text = "64";
+                button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = true;    
+                if (checkT16.Checked)             
+                    SendData("P", 16);
+                else if (checkT4.Checked)
+                    SendData("P", 4);
+                else if (checkT1.Checked)
+                    SendData("P", 1);
+
                 button2.Text = "Stop Pwm";
                 lbl_status.Text = "PWM Started";
+                text_pwmfreq.Text = String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
             }
             else
             {
@@ -311,8 +312,8 @@ namespace ScopeTest {
             }
         }
         private void button3_Click_1(object sender, EventArgs e)
-        {
-            pwm++;
+        {           
+            pwm=Convert.ToInt32(text_pwm.Text)+1;
             if (pwm > 255)
                 pwm = 255;
             duty = pwm / 2;
@@ -321,11 +322,12 @@ namespace ScopeTest {
             SendData("D", duty);        
             updatePwmText(Convert.ToString(pwm));
             updateDutyText(Convert.ToString(duty));
+            text_pwmfreq.Text = String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
         }
 
         private void button4_Click_1(object sender, EventArgs e)
-        {
-            pwm--;
+        {            
+            pwm = Convert.ToInt32(text_pwm.Text) - 1;
             if (pwm < 2)
                 pwm = 2;
             duty = pwm / 2;
@@ -333,11 +335,12 @@ namespace ScopeTest {
             SendData("D", duty);
             updatePwmText(Convert.ToString(pwm));
             updateDutyText(Convert.ToString(duty));
+            text_pwmfreq.Text = String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
         }
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-            duty++;
+            duty = Convert.ToInt32(text_duty.Text) + 1;
             if (duty > 255)
                 duty = 255;
             SendData("F", pwm);
@@ -348,7 +351,7 @@ namespace ScopeTest {
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-            duty--;
+            duty = Convert.ToInt32(text_duty.Text) - 1;
             if (duty < 0)
                 duty = 0;
             SendData("F", pwm);
@@ -356,6 +359,54 @@ namespace ScopeTest {
             updatePwmText(Convert.ToString(pwm));
             updateDutyText(Convert.ToString(duty));
         }
+        private void checkT16_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkT16.Checked)
+            {
+                checkT1.Checked = false;
+                checkT4.Checked = false;
+            }
+            if (button2.Text == "Stop Pwm")
+            {
+                SendData("P", 16);
+                timediv = 16;
+                text_pwmfreq.Text = String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
+            }
 
+        }
+
+        private void checkT4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkT4.Checked)
+            {
+                checkT1.Checked = false;
+                checkT16.Checked = false;
+            }
+            if (button2.Text == "Stop Pwm")
+            {
+                SendData("P", 4);
+                timediv = 4;
+                text_pwmfreq.Text = String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
+            }
+        }
+
+        private void checkT1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkT1.Checked)
+            {
+                checkT16.Checked = false;
+                checkT4.Checked = false;
+            }
+            if (button2.Text == "Stop Pwm")
+            {
+                SendData("P", 1);
+                timediv = 1;
+                text_pwmfreq.Text = String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
+            }
+        }
+        private double getFreq(int pwnfreq, int timediv)
+        {
+            return (double)(xtalfreq / (timediv * (pwnfreq + 1) * 4))/1000;
+        }
 	}
 }

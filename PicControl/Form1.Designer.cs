@@ -29,7 +29,6 @@ namespace ScopeTest {
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.samplesTextbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -51,19 +50,25 @@ namespace ScopeTest {
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkT16 = new System.Windows.Forms.CheckBox();
+            this.checkT4 = new System.Windows.Forms.CheckBox();
+            this.checkT1 = new System.Windows.Forms.CheckBox();
+            this.text_pwmfreq = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // startButton
             // 
             this.startButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.startButton.Location = new System.Drawing.Point(5, 91);
+            this.startButton.Location = new System.Drawing.Point(3, 7);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(115, 32);
+            this.startButton.Size = new System.Drawing.Size(133, 28);
             this.startButton.TabIndex = 1;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
@@ -79,10 +84,10 @@ namespace ScopeTest {
             this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar1.BackColor = System.Drawing.SystemColors.Desktop;
             this.trackBar1.LargeChange = 3;
-            this.trackBar1.Location = new System.Drawing.Point(5, 17);
+            this.trackBar1.Location = new System.Drawing.Point(400, 89);
             this.trackBar1.Maximum = 21;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(242, 45);
+            this.trackBar1.Size = new System.Drawing.Size(207, 45);
             this.trackBar1.TabIndex = 2;
             this.trackBar1.Value = 15;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -90,7 +95,7 @@ namespace ScopeTest {
             // samplesTextbox
             // 
             this.samplesTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.samplesTextbox.Location = new System.Drawing.Point(588, 228);
+            this.samplesTextbox.Location = new System.Drawing.Point(576, 49);
             this.samplesTextbox.Name = "samplesTextbox";
             this.samplesTextbox.Size = new System.Drawing.Size(31, 20);
             this.samplesTextbox.TabIndex = 7;
@@ -102,23 +107,12 @@ namespace ScopeTest {
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(550, 231);
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(538, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "50ms";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.Location = new System.Drawing.Point(328, 47);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 26);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Set Color=Blue";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // checkBox1
             // 
@@ -126,7 +120,7 @@ namespace ScopeTest {
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(8, 71);
+            this.checkBox1.Location = new System.Drawing.Point(405, 22);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 11;
@@ -137,7 +131,7 @@ namespace ScopeTest {
             // 
             this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(58, 71);
+            this.checkBox2.Location = new System.Drawing.Point(455, 22);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(15, 14);
             this.checkBox2.TabIndex = 12;
@@ -148,7 +142,7 @@ namespace ScopeTest {
             // 
             this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(108, 71);
+            this.checkBox3.Location = new System.Drawing.Point(505, 22);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(15, 14);
             this.checkBox3.TabIndex = 13;
@@ -159,7 +153,7 @@ namespace ScopeTest {
             // 
             this.checkBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(158, 70);
+            this.checkBox4.Location = new System.Drawing.Point(555, 21);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(15, 14);
             this.checkBox4.TabIndex = 14;
@@ -219,11 +213,11 @@ namespace ScopeTest {
             // 
             // lbl_status
             // 
-            this.lbl_status.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbl_status.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbl_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_status.Location = new System.Drawing.Point(126, 100);
+            this.lbl_status.Location = new System.Drawing.Point(142, 13);
             this.lbl_status.Name = "lbl_status";
-            this.lbl_status.Size = new System.Drawing.Size(335, 23);
+            this.lbl_status.Size = new System.Drawing.Size(252, 18);
             this.lbl_status.TabIndex = 20;
             this.lbl_status.Text = "Disconnected";
             // 
@@ -241,7 +235,8 @@ namespace ScopeTest {
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 71);
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(426, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 23;
@@ -250,7 +245,8 @@ namespace ScopeTest {
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(76, 71);
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(476, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 24;
@@ -259,7 +255,8 @@ namespace ScopeTest {
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(126, 71);
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(526, 22);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 25;
@@ -268,7 +265,8 @@ namespace ScopeTest {
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(176, 71);
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Location = new System.Drawing.Point(576, 22);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 13);
             this.label5.TabIndex = 26;
@@ -277,52 +275,55 @@ namespace ScopeTest {
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.text_pwmfreq);
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.text_duty);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lbl_status);
+            this.panel1.Controls.Add(this.samplesTextbox);
             this.panel1.Controls.Add(this.text_pwm);
             this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.checkBox2);
             this.panel1.Controls.Add(this.trackBar1);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.checkBox4);
+            this.panel1.Controls.Add(this.checkBox3);
             this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.startButton);
             this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.checkBox2);
-            this.panel1.Controls.Add(this.checkBox3);
-            this.panel1.Controls.Add(this.checkBox4);
             this.panel1.Location = new System.Drawing.Point(12, 281);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(622, 139);
+            this.panel1.Size = new System.Drawing.Size(622, 151);
             this.panel1.TabIndex = 22;
             // 
             // text_duty
             // 
-            this.text_duty.Location = new System.Drawing.Point(570, 84);
+            this.text_duty.Location = new System.Drawing.Point(106, 111);
             this.text_duty.Multiline = true;
             this.text_duty.Name = "text_duty";
             this.text_duty.Size = new System.Drawing.Size(45, 23);
             this.text_duty.TabIndex = 33;
-            this.text_duty.Text = "128";
+            this.text_duty.Text = "64";
             // 
             // text_pwm
             // 
-            this.text_pwm.Location = new System.Drawing.Point(570, 26);
+            this.text_pwm.Location = new System.Drawing.Point(106, 73);
             this.text_pwm.Multiline = true;
             this.text_pwm.Name = "text_pwm";
             this.text_pwm.Size = new System.Drawing.Size(45, 23);
             this.text_pwm.TabIndex = 32;
-            this.text_pwm.Text = "255";
+            this.text_pwm.Text = "128";
             // 
             // button6
             // 
             this.button6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button6.Location = new System.Drawing.Point(467, 100);
+            this.button6.Location = new System.Drawing.Point(157, 111);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(97, 23);
             this.button6.TabIndex = 31;
@@ -333,7 +334,7 @@ namespace ScopeTest {
             // button5
             // 
             this.button5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button5.Location = new System.Drawing.Point(467, 71);
+            this.button5.Location = new System.Drawing.Point(3, 111);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(97, 23);
             this.button5.TabIndex = 30;
@@ -344,7 +345,7 @@ namespace ScopeTest {
             // button4
             // 
             this.button4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button4.Location = new System.Drawing.Point(467, 42);
+            this.button4.Location = new System.Drawing.Point(157, 73);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(97, 23);
             this.button4.TabIndex = 29;
@@ -355,7 +356,7 @@ namespace ScopeTest {
             // button3
             // 
             this.button3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button3.Location = new System.Drawing.Point(467, 13);
+            this.button3.Location = new System.Drawing.Point(3, 71);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(97, 23);
             this.button3.TabIndex = 28;
@@ -367,7 +368,7 @@ namespace ScopeTest {
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.button2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button2.Location = new System.Drawing.Point(328, 13);
+            this.button2.Location = new System.Drawing.Point(3, 39);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(133, 28);
             this.button2.TabIndex = 27;
@@ -375,17 +376,71 @@ namespace ScopeTest {
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.checkT1);
+            this.groupBox1.Controls.Add(this.checkT4);
+            this.groupBox1.Controls.Add(this.checkT16);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox1.Location = new System.Drawing.Point(260, 49);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(134, 85);
+            this.groupBox1.TabIndex = 34;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Time Div";
+            // 
+            // checkT16
+            // 
+            this.checkT16.AutoSize = true;
+            this.checkT16.Location = new System.Drawing.Point(7, 20);
+            this.checkT16.Name = "checkT16";
+            this.checkT16.Size = new System.Drawing.Size(101, 17);
+            this.checkT16.TabIndex = 0;
+            this.checkT16.Text = "T2_DIV_BY_16";
+            this.checkT16.UseVisualStyleBackColor = true;
+            this.checkT16.CheckedChanged += new System.EventHandler(this.checkT16_CheckedChanged);
+            // 
+            // checkT4
+            // 
+            this.checkT4.AutoSize = true;
+            this.checkT4.Location = new System.Drawing.Point(7, 40);
+            this.checkT4.Name = "checkT4";
+            this.checkT4.Size = new System.Drawing.Size(95, 17);
+            this.checkT4.TabIndex = 1;
+            this.checkT4.Text = "T2_DIV_BY_4";
+            this.checkT4.UseVisualStyleBackColor = true;
+            this.checkT4.CheckedChanged += new System.EventHandler(this.checkT4_CheckedChanged);
+            // 
+            // checkT1
+            // 
+            this.checkT1.AutoSize = true;
+            this.checkT1.Location = new System.Drawing.Point(7, 62);
+            this.checkT1.Name = "checkT1";
+            this.checkT1.Size = new System.Drawing.Size(95, 17);
+            this.checkT1.TabIndex = 2;
+            this.checkT1.Text = "T2_DIV_BY_1";
+            this.checkT1.UseVisualStyleBackColor = true;
+            this.checkT1.CheckedChanged += new System.EventHandler(this.checkT1_CheckedChanged);
+            // 
+            // text_pwmfreq
+            // 
+            this.text_pwmfreq.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.text_pwmfreq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.text_pwmfreq.Location = new System.Drawing.Point(402, 49);
+            this.text_pwmfreq.Name = "text_pwmfreq";
+            this.text_pwmfreq.Size = new System.Drawing.Size(168, 21);
+            this.text_pwmfreq.TabIndex = 35;
+            this.text_pwmfreq.Text = "Disconnected";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 432);
+            this.ClientSize = new System.Drawing.Size(648, 444);
             this.Controls.Add(this.trackBar2);
             this.Controls.Add(this.lbl_data);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.trackBar3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.samplesTextbox);
             this.Controls.Add(this.scopeControl);
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -394,6 +449,8 @@ namespace ScopeTest {
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,8 +463,7 @@ namespace ScopeTest {
 		private System.Windows.Forms.Timer updateTimer;
         private System.Windows.Forms.TrackBar trackBar1;
 		private System.Windows.Forms.TextBox samplesTextbox;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.CheckBox checkBox1;
 		private System.Windows.Forms.CheckBox checkBox2;
 		private System.Windows.Forms.CheckBox checkBox3;
@@ -428,6 +484,11 @@ namespace ScopeTest {
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox checkT1;
+        private System.Windows.Forms.CheckBox checkT4;
+        private System.Windows.Forms.CheckBox checkT16;
+        private System.Windows.Forms.Label text_pwmfreq;
 	}
 }
 

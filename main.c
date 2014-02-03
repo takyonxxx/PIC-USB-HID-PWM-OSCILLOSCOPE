@@ -19,9 +19,10 @@
 unsigned int8 datain[8];
 unsigned int8 dataout[8];
 static unsigned int16 adc_read = 0;
-static unsigned int16 pwmfreq = 255;
-static unsigned int16 pwmduty = 128;
+static unsigned int16 pwmfreq = 128;
+static unsigned int16 pwmduty = 64;
 static unsigned int16 channel = 0;
+static unsigned int16 pwmmode = 16;
 unsigned int pwm1;
 unsigned int x; 
 void user_init(void) 
@@ -84,10 +85,14 @@ void main(void)
                             break;
                         }                        
                         case 'P':
-                        {
-                           pwmfreq=255;
-                           pwmduty=128;   
+                        {                         
                            x = (unsigned int) pwmduty;
+                           pwmmode=datain[1];
+                           if(pwmmode==1)
+                           setup_timer_2(T2_DIV_BY_1,pwmfreq,1);  
+                           else if(pwmmode==4)
+                           setup_timer_2(T2_DIV_BY_4,pwmfreq,1);                             
+                           else if(pwmmode==16)
                            setup_timer_2(T2_DIV_BY_16,pwmfreq,1);  
                            set_pwm1_duty(x);                           
                            printf("\r\n PWM START");                          
@@ -114,7 +119,12 @@ void main(void)
                          pwmfreq=datain[1];
                          if(pwmfreq>255)pwmfreq=255;
                          if(pwmfreq<0)pwmfreq=0;                        
-                         setup_timer_2(T2_DIV_BY_16,pwmfreq,1);
+                         if(pwmmode==1)
+                           setup_timer_2(T2_DIV_BY_1,pwmfreq,1);  
+                           else if(pwmmode==4)
+                           setup_timer_2(T2_DIV_BY_4,pwmfreq,1);                             
+                           else if(pwmmode==16)
+                           setup_timer_2(T2_DIV_BY_16,pwmfreq,1);  
                          printf("\r\n PWM: %Ld  DUTY: %Ld",pwmfreq,pwmduty);                         
                            break;
                         }
