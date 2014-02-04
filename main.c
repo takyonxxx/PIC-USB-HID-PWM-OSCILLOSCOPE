@@ -19,8 +19,8 @@
 unsigned int8 datain[8];
 unsigned int8 dataout[8];
 static unsigned int16 adc_read = 0;
-static unsigned int16 pwmfreq = 128;
-static unsigned int16 pwmduty = 64;
+static unsigned int16 pwmfreq = 255;
+static unsigned int16 pwmduty = 128;
 static unsigned int16 channel = 0;
 static unsigned int16 pwmmode = 16;
 unsigned int pwm1;
@@ -28,13 +28,11 @@ unsigned int x;
 void user_init(void) 
 { 
    disable_interrupts(GLOBAL);  
-   SET_TRIS_A(0x01); 
+   SET_TRIS_A(0xff); 
    SET_TRIS_C(0x00); 
    SET_TRIS_D(0x00); 
-  
-   //set_tris_b(0xff); // DATA_LINE_IN
-   setup_adc_ports(AN0_TO_AN1); 
-   setup_adc(ADC_CLOCK_INTERNAL);    
+   setup_adc_ports(AN0_TO_AN1);                                        
+   setup_adc(ADC_CLOCK_DIV_32);    
    output_low(PIN_C1);   // Set CCP1 output low   
    setup_ccp1(CCP_PWM);  // Configure CCP1 as a PWM    
 } 
@@ -80,7 +78,7 @@ void main(void)
                             channel=datain[1];
                             set_adc_channel(channel);
                             adc_read= read_adc();                            
-                            printf("\r\n ADC: %Ld ",adc_read); 
+                            printf("\r\nChnl: %Ld, ADC: %Ld ",channel,adc_read); 
                             send_data(adc_read);
                             break;
                         }                        

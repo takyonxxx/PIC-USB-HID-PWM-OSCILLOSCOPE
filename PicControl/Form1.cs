@@ -21,10 +21,11 @@ namespace ScopeTest {
         byte[] received_buffer = new byte[8];
 		int samples = 10;
 		int samplesGenerated = 0;
-        int pwm = 128;
-        int duty = 64;
+        int pwm = 255;
+        int duty = 128;
         int timediv = 16;
-        int xtalfreq = 20000000;
+        int data1=0,data2=0;
+        int xtalfreq = 20000000;        
 		double eqTime = 0.025;
 		public Form1() {
 			InitializeComponent();
@@ -67,77 +68,73 @@ namespace ScopeTest {
                 startButton.Text = "Start";          
 			}
 		}
-        int data=0;
-        void GetData()
+       
+        int GetData()
         {
             if (my_hid.IsOpen)
             {
                 try
                 {
                     my_hid.ReadPipe(ref received_buffer, 128, TransactionType.Interrupt);
-                    data = received_buffer[2] * 256 + received_buffer[1];
-                    updateReadText(Convert.ToString((float)data * 5 / 1023));
+                    return received_buffer[2] * 256 + received_buffer[1];                   
                 }
                 catch { }
             }
+            return 0;
         }
-        
-        
-        delegate void updateReadTextDelegate(string newText);
-        private void updateReadText(string newText)
-        {
-            if (lbl_data.InvokeRequired)
-            {
-                updateReadTextDelegate del = new updateReadTextDelegate(updateReadText);
-                lbl_data.Invoke(del, new object[] { newText.Trim() });
-            }
-            else
-            {
-                lbl_data.Text = newText.Trim();
-            }
-        }
-		
 		private void updateTimer_Tick(object sender, EventArgs e) {                        
                         try
                         {
-                            SendData("A",0);
-                            GetData();
-                            int i, samplesToGen = (int)((uTimer.ElapsedMilliseconds * samples) / (eqTime * 1000));
-                            for (i = samplesGenerated; i < samplesToGen; i++)
-                            {
-
-                                // begin the collection process
-                                scopeControl.BeginAddPoint();
-                                double tm = i * (eqTime / 10);
-                                scopeControl.AddPoint(0, (float) data * 5 / 1023);                                
-                                scopeControl.EndAddPoint();
-                            }
-                            samplesGenerated = i;
-                            //textBox2.Text = String.Format("{0:0.00}", Convert.ToDouble((Convert.ToDouble(lineArr[2]) * 5 / 1023)));
-                            //textBox3.Text = String.Format("{0:0.00}", Convert.ToDouble((Convert.ToDouble(lineArr[3]) * 5 / 1023)));
-                            //textBox4.Text = String.Format("{0:0.00}", Convert.ToDouble((Convert.ToDouble(lineArr[4]) * 5 / 1023)));                           
+                            if (checkBox1.Checked)
+                                setscope(0);
+                            if (checkBox2.Checked)
+                                setscope(1);                             
                         }
                         catch { }
 		}
-
+        private void setscope(int channel)
+       {
+           int i, samplesToGen = (int)((uTimer.ElapsedMilliseconds * samples) / (eqTime * 1000));
+           SendData("A", channel);
+           switch (channel)
+           {
+               case 0:
+                   data1 = GetData();
+                   lbl_chnl1.Text = String.Format("{0:0.00 V}",(float)data1 * 5 / 1023);
+                   break;
+               case 1:
+                   data2 = GetData();
+                   lbl_chnl2.Text = String.Format("{0:0.00 V}", (float)data2 * 5 / 1023);
+                   break;               
+               default:
+                   Console.WriteLine("No Adc");
+                   break;
+           }   
+           for (i = samplesGenerated; i < samplesToGen; i++)
+           {
+               // begin the collection process
+               scopeControl.BeginAddPoint();
+               double tm = i * (eqTime / 10);
+               scopeControl.AddPoint(0, (float)data1 * 5 / 1023);
+               scopeControl.AddPoint(1, (float)data2 * 5 / 1023);               
+               scopeControl.EndAddPoint();
+           }
+           samplesGenerated = i;   
+       }
 		private void Form1_Load(object sender, EventArgs e) {            
-			Color [] colors = new Color[4];
+			Color [] colors = new Color[2];
 
 			colors[0] = Color.Gold;
 			colors[1] = Color.Red;
-			colors[2] = Color.Yellow;
-			colors[3] = Color.Green;
-
-			for ( int i = 0; i < 4; i++ ) {
+			
+			for ( int i = 0; i < 2; i++ ) {
 
 				Trace d = new Trace();
 				d.TraceColor = colors[i];
 				scopeControl.Traces.Add(d);               
 
 			}
-            scopeControl.Traces[1].Visible = false;
-            scopeControl.Traces[2].Visible = false;
-            scopeControl.Traces[3].Visible = false;
+            scopeControl.Traces[1].Visible = false;            
 			trackBar1_Scroll(null, null);
             checkT16.Checked = true;
 		}
@@ -201,20 +198,17 @@ namespace ScopeTest {
 
 		private void checkBox1_CheckedChanged(object sender, EventArgs e) {
 			scopeControl.Traces[0].Visible = !scopeControl.Traces[0].Visible;
+            /*adc_channel = 0;
+            checkBox2.Checked = false;
+            */          
 		}
 
 		private void checkBox2_CheckedChanged(object sender, EventArgs e) {
 			scopeControl.Traces[1].Visible = !scopeControl.Traces[1].Visible;
-		}
-
-		private void checkBox3_CheckedChanged(object sender, EventArgs e) {
-			scopeControl.Traces[2].Visible = !scopeControl.Traces[2].Visible;
-		}
-
-		private void checkBox4_CheckedChanged(object sender, EventArgs e) {
-			scopeControl.Traces[3].Visible = !scopeControl.Traces[3].Visible;
-		}
-
+            /*adc_channel = 1;
+            checkBox1.Checked = false;
+           */
+		}		
 		private void trackBar1_Scroll(object sender, EventArgs e) {
 
 			// neat algorithm: use logarithms to establish a base value
@@ -229,20 +223,22 @@ namespace ScopeTest {
 
 		private void trackBar2_Scroll(object sender, EventArgs e) {
 			scopeControl.Traces[0].ZeroPositionY = trackBar2.Value - 5;
+            scopeControl.Traces[1].ZeroPositionY = trackBar2.Value - 5;
 		}
 
 		private void trackBar3_Scroll(object sender, EventArgs e) {           
             scopeControl.Traces[0].MilliPerUnit =
                 (int)Math.Pow(10, trackBar3.Value / 3) *
                 (int)Math.Pow(2, trackBar3.Value % 3);
+            scopeControl.Traces[1].MilliPerUnit =
+               (int)Math.Pow(10, trackBar3.Value / 3) *
+               (int)Math.Pow(2, trackBar3.Value % 3);
 		}
 
         private void button2_Click(object sender, EventArgs e)
         {
             if (Convert.ToString(button2.Text) == "Start Pwm")
-            {
-                text_pwm.Text = "128";
-                text_duty.Text = "64";
+            {                
                 button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = true;    
                 if (checkT16.Checked)             
                     SendData("P", 16);
@@ -253,7 +249,7 @@ namespace ScopeTest {
 
                 button2.Text = "Stop Pwm";
                 lbl_status.Text = "PWM Started";
-                text_pwmfreq.Text = "Pwm Freq: " + String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
+                text_pwmfreq.Text = "Pwm Freq: " + String.Format("{0:0.000 Khz}", getFreq(pwm, timediv));
             }
             else
             {
@@ -323,7 +319,7 @@ namespace ScopeTest {
             SendData("D", duty);        
             updatePwmText(Convert.ToString(pwm));
             updateDutyText(Convert.ToString(duty));
-            text_pwmfreq.Text = "Pwm Freq: " + String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
+            text_pwmfreq.Text = "Pwm Freq: " + String.Format("{0:0.000 Khz}", getFreq(pwm, timediv));
         }
 
         private void button4_Click_1(object sender, EventArgs e)
@@ -336,7 +332,7 @@ namespace ScopeTest {
             SendData("D", duty);
             updatePwmText(Convert.ToString(pwm));
             updateDutyText(Convert.ToString(duty));
-            text_pwmfreq.Text = "Pwm Freq: " + String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
+            text_pwmfreq.Text = "Pwm Freq: " + String.Format("{0:0.000 Khz}", getFreq(pwm, timediv));
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -408,6 +404,11 @@ namespace ScopeTest {
         private double getFreq(int pwnfreq, int timediv)
         {
             return (double)(xtalfreq / (timediv * (pwnfreq + 1) * 4))/1000;
+        }
+
+        private void scopeControl_Load(object sender, EventArgs e)
+        {
+
         }
 	}
 }

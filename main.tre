@@ -1,5 +1,5 @@
 ÀÄmain
-   ÃÄMAIN  0/818  Ram=2
+   ÃÄMAIN  0/862  Ram=2
    ³  ÃÄ??0??
    ³  ÃÄ@const322  0/44  Ram=0
    ³  ÃÄuser_init  0/50  Ram=0
@@ -21,7 +21,9 @@
    ³  ³     ÀÄ@const141  0/66  Ram=0
    ³  ÃÄ@const325  0/42  Ram=0
    ³  ÃÄ@const326  0/46  Ram=0
-   ³  ÃÄ@const327  0/40  Ram=0
+   ³  ÃÄ@const327  0/50  Ram=0
+   ³  ÃÄ@PRINTF_LD_9600_31766_31767  0/220  Ram=9
+   ³  ÃÄ@const327  0/50  Ram=0
    ³  ÃÄ@PRINTF_LD_9600_31766_31767  0/220  Ram=9
    ³  ÃÄsend_data  0/34  Ram=2
    ³  ³  ÀÄusb_put_packet  0/180  Ram=14

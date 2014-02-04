@@ -1,6 +1,6 @@
 
-ROM used: 5350 (16%)
-          5350 (16%) including unused fragments
+ROM used: 5404 (16%)
+          5404 (16%) including unused fragments
 
           1 Average locations per line
           8 Average locations per statement
@@ -12,14 +12,14 @@ Stack used: 11 worst case (out of 24 total available)
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  154    83  13  main.c
+  152    83  13  main.c
   429     0   0  ..\..\..\..\Program Files\PICC\devices\18F4550.h
  1304   321  49  ..\..\..\..\Program Files\PICC\drivers\pic18_usb.h
   828     0   0  ..\..\..\..\Program Files\PICC\drivers\usb.h
   237     0   0  USB_18F4550_CONF.h
   912   247  38  ..\..\..\..\Program Files\PICC\drivers\usb.c
 ----- -----
- 3864   651 Total
+ 3862   651 Total
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------
@@ -75,13 +75,13 @@ Page ROM  %  RAM   Vol Diff  Functions:
 0     34   0   0             @goto10916
 0     50   0   0   156  1.3  user_init
 0     34   0   2   165  2.7  send_data
-0    818   8   2  2455  9.4  MAIN
+0    862   8   2  2473  9.4  MAIN
 0     44   0   0             @const322
 0     50   0   0             @const323
 0     44   0   0             @const324
 0     42   0   0             @const325
 0     46   0   0             @const326
-0     40   0   0             @const327
+0     50   0   0             @const327
 0    220   2   9             @PRINTF_LD_9600_31766_31767
 0     40   0   0             @const330
 0     38   0   0             @const331
@@ -90,11 +90,11 @@ Page ROM  %  RAM   Vol Diff  Functions:
 Program metrics:
     Functions               42
     Statements              651
-    Comments                1586
-    Volume (V)              32546
+    Comments                1585
+    Volume (V)              32570
     Difficilty (D)          182.9
-    Effort to implement (E) 5951397
-    Time to implement (T)   91 hours, 51 minutes
+    Effort to implement (E) 5956096
+    Time to implement (T)   91 hours, 55 minutes
     Est Delivered Bugs (B)  11
     Cyclomatic Complexity   131
     Maintainability (MI)    87
@@ -104,7 +104,7 @@ Program metrics:
 00000-00002     4  0  
 00004-00006     0  4  
 00008-0009C   150  0  
-0009E-07FFE  5196  27414  
+0009E-07FFE  5250  27360  
 
 
 

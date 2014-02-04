@@ -31,17 +31,13 @@ namespace ScopeTest {
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.scopeControl = new Instruments.ScopeControl();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.trackBar3 = new System.Windows.Forms.TrackBar();
             this.lbl_status = new System.Windows.Forms.Label();
-            this.lbl_data = new System.Windows.Forms.Label();
+            this.lbl_chnl1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.text_pwmfreq = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -55,6 +51,7 @@ namespace ScopeTest {
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.lbl_chnl2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
@@ -120,7 +117,7 @@ namespace ScopeTest {
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(405, 22);
+            this.checkBox1.Location = new System.Drawing.Point(492, 15);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 11;
@@ -131,34 +128,12 @@ namespace ScopeTest {
             // 
             this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(455, 22);
+            this.checkBox2.Location = new System.Drawing.Point(560, 15);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(15, 14);
             this.checkBox2.TabIndex = 12;
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(505, 22);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(15, 14);
-            this.checkBox3.TabIndex = 13;
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(555, 21);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(15, 14);
-            this.checkBox4.TabIndex = 14;
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // scopeControl
             // 
@@ -182,16 +157,17 @@ namespace ScopeTest {
             this.scopeControl.Size = new System.Drawing.Size(623, 277);
             this.scopeControl.TabIndex = 0;
             this.scopeControl.UnitsY = 10F;
+            this.scopeControl.Load += new System.EventHandler(this.scopeControl_Load);
             // 
             // trackBar2
             // 
             this.trackBar2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar2.BackColor = System.Drawing.SystemColors.ControlText;
             this.trackBar2.LargeChange = 3;
-            this.trackBar2.Location = new System.Drawing.Point(574, 58);
+            this.trackBar2.Location = new System.Drawing.Point(574, 97);
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar2.Size = new System.Drawing.Size(45, 164);
+            this.trackBar2.Size = new System.Drawing.Size(45, 125);
             this.trackBar2.TabIndex = 15;
             this.trackBar2.Value = 5;
             this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
@@ -201,12 +177,12 @@ namespace ScopeTest {
             this.trackBar3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar3.BackColor = System.Drawing.SystemColors.ControlText;
             this.trackBar3.LargeChange = 3;
-            this.trackBar3.Location = new System.Drawing.Point(504, 58);
+            this.trackBar3.Location = new System.Drawing.Point(504, 97);
             this.trackBar3.Maximum = 12;
             this.trackBar3.Minimum = 1;
             this.trackBar3.Name = "trackBar3";
             this.trackBar3.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar3.Size = new System.Drawing.Size(45, 164);
+            this.trackBar3.Size = new System.Drawing.Size(45, 125);
             this.trackBar3.TabIndex = 16;
             this.trackBar3.Value = 10;
             this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_Scroll);
@@ -221,22 +197,22 @@ namespace ScopeTest {
             this.lbl_status.TabIndex = 20;
             this.lbl_status.Text = "Disconnected";
             // 
-            // lbl_data
+            // lbl_chnl1
             // 
-            this.lbl_data.BackColor = System.Drawing.Color.Black;
-            this.lbl_data.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_data.ForeColor = System.Drawing.Color.White;
-            this.lbl_data.Location = new System.Drawing.Point(504, 24);
-            this.lbl_data.Name = "lbl_data";
-            this.lbl_data.Size = new System.Drawing.Size(115, 31);
-            this.lbl_data.TabIndex = 21;
-            this.lbl_data.UseMnemonic = false;
+            this.lbl_chnl1.BackColor = System.Drawing.Color.Black;
+            this.lbl_chnl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_chnl1.ForeColor = System.Drawing.Color.White;
+            this.lbl_chnl1.Location = new System.Drawing.Point(504, 24);
+            this.lbl_chnl1.Name = "lbl_chnl1";
+            this.lbl_chnl1.Size = new System.Drawing.Size(115, 31);
+            this.lbl_chnl1.TabIndex = 21;
+            this.lbl_chnl1.UseMnemonic = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(426, 22);
+            this.label2.Location = new System.Drawing.Point(513, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 23;
@@ -246,31 +222,11 @@ namespace ScopeTest {
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(476, 22);
+            this.label3.Location = new System.Drawing.Point(581, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 24;
             this.label3.Text = "Ch2";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(526, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Ch3";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(576, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 13);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "Ch4";
             // 
             // panel1
             // 
@@ -285,12 +241,8 @@ namespace ScopeTest {
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.checkBox2);
             this.panel1.Controls.Add(this.trackBar1);
-            this.panel1.Controls.Add(this.checkBox4);
-            this.panel1.Controls.Add(this.checkBox3);
-            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.startButton);
@@ -365,7 +317,7 @@ namespace ScopeTest {
             this.text_duty.Name = "text_duty";
             this.text_duty.Size = new System.Drawing.Size(45, 23);
             this.text_duty.TabIndex = 33;
-            this.text_duty.Text = "64";
+            this.text_duty.Text = "128";
             // 
             // text_pwm
             // 
@@ -374,7 +326,7 @@ namespace ScopeTest {
             this.text_pwm.Name = "text_pwm";
             this.text_pwm.Size = new System.Drawing.Size(45, 23);
             this.text_pwm.TabIndex = 32;
-            this.text_pwm.Text = "128";
+            this.text_pwm.Text = "255";
             // 
             // button6
             // 
@@ -432,13 +384,25 @@ namespace ScopeTest {
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // lbl_chnl2
+            // 
+            this.lbl_chnl2.BackColor = System.Drawing.Color.Black;
+            this.lbl_chnl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_chnl2.ForeColor = System.Drawing.Color.White;
+            this.lbl_chnl2.Location = new System.Drawing.Point(504, 63);
+            this.lbl_chnl2.Name = "lbl_chnl2";
+            this.lbl_chnl2.Size = new System.Drawing.Size(115, 31);
+            this.lbl_chnl2.TabIndex = 23;
+            this.lbl_chnl2.UseMnemonic = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 444);
+            this.Controls.Add(this.lbl_chnl2);
             this.Controls.Add(this.trackBar2);
-            this.Controls.Add(this.lbl_data);
+            this.Controls.Add(this.lbl_chnl1);
             this.Controls.Add(this.trackBar3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.scopeControl);
@@ -465,17 +429,13 @@ namespace ScopeTest {
 		private System.Windows.Forms.TextBox samplesTextbox;
         private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.CheckBox checkBox1;
-		private System.Windows.Forms.CheckBox checkBox2;
-		private System.Windows.Forms.CheckBox checkBox3;
-		private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox2;
 		private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.TrackBar trackBar3;
         private System.Windows.Forms.Label lbl_status;
-        private System.Windows.Forms.Label lbl_data;
+        private System.Windows.Forms.Label lbl_chnl1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox text_duty;
         private System.Windows.Forms.TextBox text_pwm;
@@ -489,6 +449,7 @@ namespace ScopeTest {
         private System.Windows.Forms.CheckBox checkT4;
         private System.Windows.Forms.CheckBox checkT16;
         private System.Windows.Forms.Label text_pwmfreq;
+        private System.Windows.Forms.Label lbl_chnl2;
 	}
 }
 
