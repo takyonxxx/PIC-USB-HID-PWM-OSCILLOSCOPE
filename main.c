@@ -3,7 +3,7 @@
 #device ADC=10 
 #fuses HSPLL,USBDIV,PLL5,PUT,CPUDIV1,VREGEN,NOWDT,NOPROTECT,NOLVP,NODEBUG,NOMCLR 
 #use delay(clock=20000000) 
-#use rs232(baud=9600,rcv=pin_c7,xmit=pin_c6) 
+#use rs232(baud=9600,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8,STOP=1)
 #define USB_HID_DEVICE     TRUE              
 #define USB_EP1_TX_ENABLE  USB_ENABLE_BULK    
 #define USB_EP1_RX_ENABLE  USB_ENABLE_BULK    
@@ -12,10 +12,10 @@
 #include <pic18_usb.h>      
 #include "USB_18F4550_CONF.h"             
 #include <usb.c>   
-#use fast_io(a)
-#use fast_io(b)
-#use fast_io(c)
-#use fast_io(d)
+#use FAST_IO(A)         // I/O dir doesn't change when
+#use FAST_IO(B)         // reading and writing to ports
+#use FAST_IO(C)
+#use FAST_IO(D)
 unsigned int8 datain[8];
 unsigned int8 dataout[8];
 static unsigned int16 adc_read = 0;
@@ -37,9 +37,10 @@ char gonderilecekveri[128];
 void user_init(void) 
 { 
    disable_interrupts(GLOBAL);  
-   SET_TRIS_A(0xff); 
-   SET_TRIS_B(0xff);
-   SET_TRIS_E(0xff);  
+   set_tris_a(0xff);
+   set_tris_b(0xff);
+   set_tris_e(0xff);
+   set_tris_c(0xBF);
    setup_adc_ports(ALL_ANALOG);  // A0 A1 A2 A3 A5 E0 E1 E2 B2 B3 B1 B4 B0  
    setup_adc(ADC_CLOCK_DIV_8);    
    output_low(PIN_C1);   // Set CCP1 output low   
@@ -171,6 +172,14 @@ void main(void)
                          serigonder();                                   
                          break;
                         }
+                       case 'T':
+                        {                              
+                         putc('T');
+                         putc('E');
+                         putc('S');
+                         putc('T');                         
+                         break;
+                        }
                         default:
                         {                            
                          break;
@@ -185,11 +194,4 @@ void main(void)
     
                               
 
-                   
-
-
-
-
-
-
-
+  

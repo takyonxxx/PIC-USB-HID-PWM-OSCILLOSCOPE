@@ -72,6 +72,8 @@ namespace ScopeTest {
             this.label13 = new System.Windows.Forms.Label();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
@@ -223,6 +225,8 @@ namespace ScopeTest {
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.button9);
+            this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.trackBar2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.text_pwmfreq);
@@ -261,7 +265,7 @@ namespace ScopeTest {
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.button1.Location = new System.Drawing.Point(413, 10);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(157, 23);
+            this.button1.Size = new System.Drawing.Size(90, 23);
             this.button1.TabIndex = 36;
             this.button1.Text = "Serial On";
             this.button1.UseVisualStyleBackColor = true;
@@ -627,6 +631,28 @@ namespace ScopeTest {
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button8.Location = new System.Drawing.Point(523, 10);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(90, 23);
+            this.button8.TabIndex = 46;
+            this.button8.Text = "TEST";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button9.Location = new System.Drawing.Point(157, 39);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(97, 28);
+            this.button9.TabIndex = 47;
+            this.button9.Text = "Adc On";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -723,6 +749,8 @@ namespace ScopeTest {
         private System.Windows.Forms.CheckBox checkBox10;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
 	}
 }
 

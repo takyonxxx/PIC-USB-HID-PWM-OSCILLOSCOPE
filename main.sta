@@ -1,6 +1,6 @@
 
-ROM used: 8026 (24%)
-          8026 (24%) including unused fragments
+ROM used: 8074 (25%)
+          8074 (25%) including unused fragments
 
           2 Average locations per line
           12 Average locations per statement
@@ -12,20 +12,20 @@ Stack used: 11 worst case (out of 24 total available)
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  196   102  15  main.c
+  198   109  16  main.c
   429     0   0  ..\..\..\..\..\Program Files\PICC\devices\18F4550.h
- 1304   321  48  ..\..\..\..\..\Program Files\PICC\drivers\pic18_usb.h
+ 1304   321  47  ..\..\..\..\..\Program Files\PICC\drivers\pic18_usb.h
   828     0   0  ..\..\..\..\..\Program Files\PICC\drivers\usb.h
   237     0   0  USB_18F4550_CONF.h
-  912   247  37  ..\..\..\..\..\Program Files\PICC\drivers\usb.c
+  912   247  36  ..\..\..\..\..\Program Files\PICC\drivers\usb.c
 ----- -----
- 3906   670 Total
+ 3908   677 Total
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------
-0     32   0   0             @const135
+0     32   0   0    44  1.9  @const135
 0     48   0   0             @const139
-0     66   0   0             @const141
+0     66   0   0   222  7.1  @const141
 0     44   0   1   149  2.6  usb_detach
 0     34   0   0   138  2.1  usb_attach
 0     34   0   1   346  4.6  usb_task
@@ -72,47 +72,47 @@ Page ROM  %  RAM   Vol Diff  Functions:
 0    256   2   1  1188  8.3  usb_Get_Descriptor
 0     14   0   0    76  1.8  usb_finish_set_address
 0    166   1   5   629  8.6  usb_copy_desc_seg_to_ep
-0     34   0   0             @goto10916
-0     50   0   0   156  1.3  user_init
+0     34   0   0    88  2.7  @goto10916
+0     54   0   0   179  1.4  user_init
 0     76   0   1    59  2.2  readadc
-0     56   0   2             @ITOF
+0     56   0   2   142  3.9  @ITOF
 0    500   3   2   163  1.8  serigonder
-0     32   0   1             @SPRINTF
-0    248   2  11   236  1.8  @MULFF
-0     68   0   5             @FTOSD
-0    128   1  13   236  1.8  @DIV3232
-0    426   3  13  2976  9.4  @PRINTF_L32D_348FPFPF
+0     32   0   1    47  1.5  @SPRINTF
+0    248   2  11    54  1.5  @MULFF
+0     68   0   5    54  1.5  @FTOSD
+0    128   1  13   147  3.4  @DIV3232
+0    426   3  13  1217  7.3  @PRINTF_L32D_348FPFPF
 0    544   3   3   236  1.8  usbgonder
-0     46   0   0             @const363
-0   1194   7   2  2976  9.4  MAIN
-0     44   0   0  2976  9.4  @const366
+0     46   0   0    25  0.8  @const363
+0   1238   8   2  3171  9.4  MAIN
+0     44   0   0  1041 11.3  @const366
 0     50   0   0             @const367
-0     44   0   0             @const368
-0     42   0   0             @const369
-0     46   0   0             @const370
-0     40   0   0             @const371
-0     38   0   0             @const372
-0     50   0   0             @const373
-0    226   1   9             @PRINTF_LD_9600_31766_31767
+0     44   0   0   772 11.0  @const368
+0     42   0   0   222  3.9  @const369
+0     46   0   0   201  4.9  @const370
+0     40   0   0   152  3.0  @const371
+0     38   0   0   102  2.9  @const372
+0     50   0   0   260  5.3  @const373
+0    226   1   9  1131  8.2  @PRINTF_LD_9600_31766_31767
 
 Program metrics:
-    Functions               48
-    Statements              670
+    Functions               62
+    Statements              677
     Comments                1585
-    Volume (V)              44898
-    Difficilty (D)          209.4
-    Effort to implement (E) 9402816
-    Time to implement (T)   145 hours, 6 minutes
-    Est Delivered Bugs (B)  15
-    Cyclomatic Complexity   176
-    Maintainability (MI)    117
+    Volume (V)              47392
+    Difficilty (D)          272.0
+    Effort to implement (E) 12891283
+    Time to implement (T)   198 hours, 56 minutes
+    Est Delivered Bugs (B)  18
+    Cyclomatic Complexity   178
+    Maintainability (MI)    147
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
 00004-00006     0  4  
 00008-0009C   150  0  
-0009E-07FFE  7872  24738  
+0009E-07FFE  7920  24690  
 
 
 

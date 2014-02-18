@@ -11,7 +11,7 @@ using USBManagement;
 using System.Globalization;
 namespace ScopeTest {
 	public partial class Form1 : Form {
-        Boolean serialon = false;
+        Boolean serialon = false,adcon=false,pwmon=false;
 		List<TextBox> textBoxes = new List<TextBox>();
         UsbHidDevice my_hid = new UsbHidDevice();
         short VendorID = short.Parse("1111", NumberStyles.HexNumber);
@@ -37,13 +37,7 @@ namespace ScopeTest {
             if (my_hid.OpenPipe(VendorID, ProductID))
             {
                 SendData("C",0);               
-                lbl_status.Text = "Connected to PIC";
-                scopeControl.Start();
-                samplesGenerated = 0;
-                uTimer.Reset();
-                uTimer.Start();
-                updateTimer.Interval = (int)(eqTime * 1000);
-                updateTimer.Start();
+                lbl_status.Text = "Connected to PIC";               
                 button2.Enabled = true;
                 startButton.Text = "Stop";
             }
@@ -55,11 +49,9 @@ namespace ScopeTest {
 		private void startButton_Click(object sender, EventArgs e) {
 			if ( startButton.Text == "Start" ) {              	
                 connect();               
-			} else {
-				uTimer.Stop();
-				updateTimer.Stop();
-				scopeControl.Stop();
-                SendData("S",0);               
+			} else {	
+		        if(pwmon)
+                 SendData("S",0);               
                 SendData("E",0);                       
                 my_hid.ClosePipe();
                 button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = false;
@@ -304,7 +296,8 @@ namespace ScopeTest {
         private void button2_Click(object sender, EventArgs e)
         {
             if (Convert.ToString(button2.Text) == "Start Pwm")
-            {                
+            {
+                pwmon = true;
                 button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = true;    
                 if (checkT16.Checked)             
                     SendData("P", 16);
@@ -319,6 +312,7 @@ namespace ScopeTest {
             }
             else
             {
+                pwmon = false;
                 button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = false;
                 SendData("S",0);
                 button2.Text = "Start Pwm";
@@ -477,11 +471,17 @@ namespace ScopeTest {
             if (!serialon)
             {               
                 serialon = true;
+                uTimer.Reset();
+                uTimer.Start();
+                updateTimer.Interval = (int)(eqTime * 1000);
+                updateTimer.Start();
                 button1.Text = "Serial Off";
             }
             else
             {                
                 serialon = false;
+                uTimer.Stop();
+                updateTimer.Stop();
                 button1.Text = "Serial On";
             }
         }
@@ -571,6 +571,34 @@ namespace ScopeTest {
             checkBox12.Checked = false;
             data1 = data2 =data3 =data4 = data5 = data6 =data7 = data8 = data9 = data10 = data11 = data12 = 0;
             lbl_chnl1.Text = "";
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            SendData("T", 0);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (!adcon)
+            {
+                adcon = true;
+                scopeControl.Start();
+                samplesGenerated = 0;
+                uTimer.Reset();
+                uTimer.Start();
+                updateTimer.Interval = (int)(eqTime * 1000);
+                updateTimer.Start();
+                button9.Text = "Adc Off";
+            }
+            else
+            {
+                adcon = false;
+                uTimer.Stop();
+                updateTimer.Stop();
+                scopeControl.Stop();
+                button9.Text = "Adc On";
+            }
         }
 
 	}
