@@ -19,7 +19,8 @@ AdditionalOptionString=
 Link=0
 Count=1
 1=main.c
+2=p18f4550.h
 [Opened Files]
-1=C:\Users\tbiliyor\Desktop\CurrentProjects\USB_CONTROL\main.c
+1=main.c
 2=
 3=

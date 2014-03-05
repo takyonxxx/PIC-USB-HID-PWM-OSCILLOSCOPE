@@ -25,7 +25,7 @@ namespace ScopeTest {
         int duty = 128;
         int timediv = 16;
         int data1 = 0, data2 = 0, data3 = 0, data4 = 0, data5 = 0, data6 = 0, data7 = 0, data8 = 0, data9 = 0, data10 = 0, data11 = 0, data12 = 0;
-        int xtalfreq = 20000000;        
+        int xtalfreq = 48000000;        
 		double eqTime = 0.025;
 		public Form1() {
 			InitializeComponent();
@@ -36,7 +36,7 @@ namespace ScopeTest {
         {
             if (my_hid.OpenPipe(VendorID, ProductID))
             {
-                SendData("C",0);               
+                SendData("c",0);               
                 lbl_status.Text = "Connected to PIC";               
                 button2.Enabled = true;
                 startButton.Text = "Stop";
@@ -51,8 +51,8 @@ namespace ScopeTest {
                 connect();               
 			} else {	
 		        if(pwmon)
-                 SendData("S",0);               
-                SendData("E",0);                       
+                 SendData("s",0);               
+                SendData("e",0);                       
                 my_hid.ClosePipe();
                 button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = false;
                 lbl_status.Text = "Disconnected";
@@ -82,7 +82,7 @@ namespace ScopeTest {
                                 if (my_hid.IsOpen)
                                         setscope();
                             }else
-                                SendData("R", 0);
+                                SendData("r", 0);
                         }
                         catch { }
 		}
@@ -120,7 +120,7 @@ namespace ScopeTest {
         private void setscope()
        {
            int i, samplesToGen = (int)((uTimer.ElapsedMilliseconds * samples) / (eqTime * 1000));
-           SendData("A", 0);
+           SendData("u", 0);
           
            string strdata = GetStrData();
            string[] adcdata = strdata.Split(';');
@@ -300,11 +300,11 @@ namespace ScopeTest {
                 pwmon = true;
                 button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = true;    
                 if (checkT16.Checked)             
-                    SendData("P", 16);
+                    SendData("p", 16);
                 else if (checkT4.Checked)
-                    SendData("P", 4);
+                    SendData("p", 4);
                 else if (checkT1.Checked)
-                    SendData("P", 1);
+                    SendData("p", 1);
 
                 button2.Text = "Stop Pwm";
                 lbl_status.Text = "PWM Started";
@@ -314,7 +314,7 @@ namespace ScopeTest {
             {
                 pwmon = false;
                 button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = false;
-                SendData("S",0);
+                SendData("s",0);
                 button2.Text = "Start Pwm";
                 lbl_status.Text = "PWM Stopped";
                 text_pwmfreq.Text = "Pwm Freq: 0 Khz";
@@ -375,8 +375,8 @@ namespace ScopeTest {
                 pwm = 255;
             duty = pwm / 2;
             if(pwm == 255)duty=128;
-            SendData("F", pwm);
-            SendData("D", duty);        
+            SendData("f", pwm);
+            SendData("d", duty);        
             updatePwmText(Convert.ToString(pwm));
             updateDutyText(Convert.ToString(duty));
             text_pwmfreq.Text = "Pwm Freq: " + String.Format("{0:0.000 Khz}", getFreq(pwm, timediv));
@@ -388,8 +388,8 @@ namespace ScopeTest {
             if (pwm < 2)
                 pwm = 2;
             duty = pwm / 2;
-            SendData("F", pwm);
-            SendData("D", duty);
+            SendData("f", pwm);
+            SendData("d", duty);
             updatePwmText(Convert.ToString(pwm));
             updateDutyText(Convert.ToString(duty));
             text_pwmfreq.Text = "Pwm Freq: " + String.Format("{0:0.000 Khz}", getFreq(pwm, timediv));
@@ -400,8 +400,8 @@ namespace ScopeTest {
             duty = Convert.ToInt32(text_duty.Text) + 1;
             if (duty > 255)
                 duty = 255;
-            SendData("F", pwm);
-            SendData("D", duty);
+            SendData("f", pwm);
+            SendData("d", duty);
             updatePwmText(Convert.ToString(pwm));
             updateDutyText(Convert.ToString(duty));
         }
@@ -411,8 +411,8 @@ namespace ScopeTest {
             duty = Convert.ToInt32(text_duty.Text) - 1;
             if (duty < 0)
                 duty = 0;
-            SendData("F", pwm);
-            SendData("D", duty);
+            SendData("f", pwm);
+            SendData("d", duty);
             updatePwmText(Convert.ToString(pwm));
             updateDutyText(Convert.ToString(duty));
         }
@@ -425,7 +425,7 @@ namespace ScopeTest {
             }
             if (button2.Text == "Stop Pwm")
             {
-                SendData("P", 16);
+                SendData("p", 16);
                 timediv = 16;
                 text_pwmfreq.Text = String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
             }
@@ -441,7 +441,7 @@ namespace ScopeTest {
             }
             if (button2.Text == "Stop Pwm")
             {
-                SendData("P", 4);
+                SendData("p", 4);
                 timediv = 4;
                 text_pwmfreq.Text = String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
             }
@@ -456,7 +456,7 @@ namespace ScopeTest {
             }
             if (button2.Text == "Stop Pwm")
             {
-                SendData("P", 1);
+                SendData("p", 1);
                 timediv = 1;
                 text_pwmfreq.Text = String.Format("{0:0.### Khz}", getFreq(pwm, timediv));
             }
@@ -573,10 +573,7 @@ namespace ScopeTest {
             lbl_chnl1.Text = "";
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            SendData("T", 0);
-        }
+      
 
         private void button9_Click(object sender, EventArgs e)
         {

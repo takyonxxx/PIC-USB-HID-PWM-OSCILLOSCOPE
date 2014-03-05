@@ -3,12 +3,13 @@
  <FRAME activewindow="0">
   <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffff030000000000000070030000c6020000</PLACEMENT>
   <WINDOW type="default" module="ISIS"/>
+  <WINDOW type="default" module="DXP"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
   <PWI>
    <POPUP w="800" x="66" flags="00000002" y="127" h="200" pid="0" iid="-1">
     <PROPERTIES>
-     <ITEM name="Message Column Width">665</ITEM>
+     <ITEM name="Message Column Width">544</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
      <ITEM name="Source Column Width">100</ITEM>
      <ITEM name="Time Column Width">120</ITEM>
@@ -38,7 +39,7 @@
    <POPUP w="695" x="126" flags="00000000" y="187" h="448" pid="0" iid="15">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="450" x="227" flags="00008063" y="170" h="250" pid="0" iid="4">
+   <POPUP w="450" x="773" flags="00008063" y="145" h="250" pid="0" iid="4">
     <PROPERTIES>
      <ITEM name="AutoEcho">0</ITEM>
      <ITEM name="HexMode">0</ITEM>
@@ -121,6 +122,9 @@
     </PROPERTIES>
    </POPUP>
    <POPUP w="640" x="346" flags="00000002" y="248" h="480" pid="147" iid="1">
+    <PROPERTIES/>
+   </POPUP>
+   <POPUP w="695" x="66" flags="00000001" y="127" h="448" pid="0" iid="5">
     <PROPERTIES/>
    </POPUP>
   </PWI>
